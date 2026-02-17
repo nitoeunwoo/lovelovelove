@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>화이트데이 이벤트</title>
+
+<style>
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+button { -webkit-appearance: none; appearance: none; font: inherit; }
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:24px;
+  overflow:hidden;
+
+  background-image:
+    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+    url("01.jpg혼 확정 ❤️</div>
+  </div>
+
+<script>
+(function () {
+  const yesBtn = document.getElementById("yesBtn") || document.querySelector(".yes");
+  const noBtn  = document.getElementById("noBtn")  || document.querySelector(".no");
+  const btnArea = document.getElementById("btnArea") || document.querySelector(".btn-container");
+  const result = document.getElementById("result");
+
+  if (!yesBtn || !noBtn || !btnArea) {
+    // 요소가 없으면(복붙 실수) 그냥 종료
+    return;
+  }
+
+  yesBtn.addEventListener("click", () => {
+    document.body.style.backgroundImage =
+      'linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url("02.jpg")';
+    if (result) result.style.display = "block";
+    createHearts();
+  });
+
+  function createHearts(){
+    for(let i=0;i<20;i++){
+      const h=document.createElement("div");
+      h.className="heart";
+      h.textContent="❤️";
+      h.style.left = (Math.random()*window.innerWidth) + "px";
+      h.style.top  = window.innerHeight + "px";
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(), 2800);
+    }
+  }
+
+  function moveNo(){
+    const w = noBtn.offsetWidth || 120;
+    const h = noBtn.offsetHeight || 48;
+    const maxX = btnArea.clientWidth - w;
+    const maxY = btnArea.clientHeight - h;
+
+    const x = Math.max(0, Math.random()*maxX);
+    const y = Math.max(0, Math.random()*maxY);
+
+    noBtn.style.left = x + "px";
+    noBtn.style.top  = y + "px";
+  }
+
+  // PC: 올리면 도망
+  noBtn.addEventListener("mouseenter", moveNo);
+
+  // 모바일: 누르려는 순간 도망
+  noBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    moveNo();
+  }, { passive:false });
+
+  // 클릭도 방지
+  noBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    moveNo();
+  });
+
+})();
+</script>
+</body>
+</html>
